@@ -64,9 +64,8 @@ export default {
     }
 
     .user-profile_button {
-        margin-top:20px;
-        width:40%;
-        height:40% ;
+        margin-top:20px;       
+        margin-right: auto;
     }
 
     .user-profile_user-panel {
