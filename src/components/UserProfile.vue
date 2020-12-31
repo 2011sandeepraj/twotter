@@ -10,21 +10,22 @@
                  Follow Me!
             </button>     
         </div>
-        <div class="user-profile_twoots-wrapper">          
+        <div >          
             <!--TwootItem v-for="twoot in user.twoots" :key="twoot.id" :username="user.username" :twoot="twoot"/-->
-            <!-- <div v-for="twoot in user.twoots" :key="twoot.id">
-                {{twoot.content}}
-            </div> -->
+            <div v-for="twoot in user.twoots" :key="twoot.id" class="twoot-item">
+                @{{user.username}} says 
+                <h3>{{twoot.content}}</h3>
+            </div>
             
         </div>
           
     </div>
-    <SandeepItem/>
+    <!-- <SandeepItem/> -->
 </template>
 
 <script>
 //import TwootItem from "./TwootItem";
-import SandeepItem from "SandeepItem";
+//import SandeepItem from "SandeepItem";
 
 
 
@@ -59,7 +60,7 @@ export default {
         fullName() {
         return `${this.user.firstName} ${this.user.lastName}`; 
     },
-    components: {SandeepItem}
+    //components: {SandeepItem}
   },
   methods: {
     followUser() {
@@ -97,4 +98,23 @@ export default {
         border-radius: 5px;
         border: 1px solid #DFE3E8;
     }
+
+    
+.twoot-item{
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #DFE3E8;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.twoot-item:hover{
+    transform: scale(1.1, 1.1)
+}
+
+.twoot-item__user{
+    font-weight: bold;
+}
 </style>
