@@ -3,17 +3,31 @@
         <div class="user-profile_user-panel">
             <h1>@{{user.username}}</h1>
             <h4>{{fullName}}</h4>
-            <div>Followers:{{ followers }}</div> 
+            <div>Followers:{{ followers }}</div>
+            
+            
             <button class="user-profile_button" @click="followUser" >
                  Follow Me!
             </button>     
         </div>
-         
+        <div class="user-profile_twoots-wrapper">          
+            <!--TwootItem v-for="twoot in user.twoots" :key="twoot.id" :username="user.username" :twoot="twoot"/-->
+            <!-- <div v-for="twoot in user.twoots" :key="twoot.id">
+                {{twoot.content}}
+            </div> -->
+            
+        </div>
+          
     </div>
-    
+    <SandeepItem/>
 </template>
 
 <script>
+//import TwootItem from "./TwootItem";
+import SandeepItem from "SandeepItem";
+
+
+
 export default {
     name: "UserProfile",
     data() {
@@ -25,7 +39,11 @@ export default {
                 firstName: 'Sandeepraj',
                 lastName: 'Singh',
                 email: 'sandeepraj.tandon@cgi.com',
-                isAdmin: true
+                isAdmin: true,
+                twoots: [
+                    {id: 1, content:'Welcome to my twooter profile'},
+                    {id: 2, content:'I am blah blah and blah and passionate about plah plah and plan!'}
+                ]
                 
             }
         }
@@ -40,7 +58,8 @@ export default {
     computed: {
         fullName() {
         return `${this.user.firstName} ${this.user.lastName}`; 
-    }
+    },
+    components: {SandeepItem}
   },
   methods: {
     followUser() {

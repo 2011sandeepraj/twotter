@@ -1,15 +1,23 @@
 <template>
  <div id="app">
    <UserProfile/>
+   <!-- <SandeepItem/> -->
  </div>
 </template>
 
 <script>
 import UserProfile from "./components/UserProfile";
 
+//import SandeepItem from './components/SandeepItem.vue';
+
+
 export default {
   name: 'App',
-  components: {UserProfile}
+  components: {
+    UserProfile
+    //,
+   // SandeepItem
+}
 } 
 </script>
 
