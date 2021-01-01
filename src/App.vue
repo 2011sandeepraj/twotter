@@ -46,7 +46,7 @@ nav {
     padding: 5px 6%;
     background-color: rgb(15, 241, 241);
     color: white;
-   
+    
 
     .navigation__logo {
       font-weight: bold;
