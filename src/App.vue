@@ -1,5 +1,11 @@
 <template>
  <div id="app">
+  <nav>
+    <div class="navigation__logo">
+        My Twootter
+    </div>
+  </nav>  
+
    <UserProfile/>
    <!-- <SandeepItem/> -->
  </div>
@@ -33,7 +39,21 @@ export default {
   min-height: 100vh;
   
 }
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 6%;
+    background-color: rgb(15, 241, 241);
+    color: white;
+   
 
+    .navigation__logo {
+      font-weight: bold;
+      font-size: 50px;
+    }
+
+}
 .select{
      background-image:none\9;
         padding: 5px\9;

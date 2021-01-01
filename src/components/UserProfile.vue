@@ -6,18 +6,23 @@
             <div>Followers:{{ followers }}</div>
             
             
-            <button class="user-profile_button" @click="followUser" >
+            <button class="userprofile-button" @click="followUser" >
                  Follow Me!
             </button>     
-            <form class="user-profile__create-twoot">
-                <label for="newTwoot">New Twoot</label>
-                <textarea id="newTwoot" rows="4" cols="50"/>
+            <form class="user-profile__create-twoot" @submit.prevent="createNewTwoot" :class="{'--exceeded':newTwootCharacterCount>180}">
+                <label for="newTwoot">New Twoot ({{newTwootCharacterCount}}/180)</label>
+                <textarea id="newTwoot" rows="4" cols="50" v-model="newTwootContent"/>
                 <label for="newTwootType">Type:</label>
-                <select id="newTwootType" class="select">
+                <select id="newTwootType" class="select" v-model="selectedTwootType">
                     <option :value="option.value" v-for="(option, index) in twootTypes" :key="index">
                             {{option.name}}
                     </option>
                 </select>
+                <div>
+                    <button class="userprofile-button">
+                        Twoot!!!
+                    </button>
+                </div>
             </form>
                
             
@@ -46,6 +51,8 @@ export default {
     name: "UserProfile",
     data() {
         return {
+            newTwootContent:'',
+            selectedTwootType:'instant',
             twootTypes:[{value: 'draft', name: 'Draft'},{value:'instant', name:'Instant Twoot'}],
             followers: 0,
             user:{
@@ -72,16 +79,32 @@ export default {
     },
     computed: {
         fullName() {
-        return `${this.user.firstName} ${this.user.lastName}`; 
+            return `${this.user.firstName} ${this.user.lastName}`; 
+        },
+
+        newTwootCharacterCount(){
+            return this.newTwootContent.length;
+        }
     },
     //components: {SandeepItem}
-  },
-  methods: {
-    followUser() {
-      this.followers++
-    }
-  } 
-}
+    methods: {
+        followUser() {
+        this.followers++
+    }, 
+    createNewTwoot(){
+       if(this.newTwootContent && this.selectedTwootType !== 'draft'){
+            let freshTwoot = {
+                id: this.user.twoots.length+1,
+                content: this.newTwootContent
+            }
+
+                this.user.twoots.unshift(freshTwoot);
+                this.newTwootContent = '';
+                console.log(`newtwootcontent should have been cleared ${this.newTwootContent}`);
+       }
+    } //createNewTwoot ends
+  } //methods ends
+} //export default ends
 
 
 </script>
@@ -98,11 +121,18 @@ export default {
     }
     
 
-    .user-profile_button {
-        margin-top:20px;       
-        margin-right: auto;
-        margin-bottom:20px;       
-    }
+    .userprofile-button {
+      padding: 5px 20px;
+      border-radius: 5px;
+      border: none;
+      background-color: deeppink;
+      color: white;
+      font-weight: bold;
+      margin-top:20px;       
+      margin-right: auto;
+      margin-bottom:20px;  
+    } 
+    
 
     .user-profile_user-panel {
         display: flex;
@@ -132,24 +162,29 @@ export default {
         grid-gap: 10px
     }
 
+    .--exceeded{
+        color: red;
+        border-color:red;
     
-.twoot-item{
-    margin-left: 50px; 
-    padding: 20px;
-    background-color: white;
-    border-radius: 5px;
-    border: 1px solid #DFE3E8;
-    box-sizing: border-box;
-    cursor: pointer;
-    transition:all 0.25s ease;
+    }
     
-}
+    .twoot-item{
+        margin-left: 50px; 
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        border: 1px solid #DFE3E8;
+        box-sizing: border-box;
+        cursor: pointer;
+        transition:all 0.25s ease;
+        
+    }
 
-.twoot-item:hover{
-    transform: scale(1.15, 1.15)
-}
+    .twoot-item:hover{
+        transform: scale(1.15, 1.15)
+    }
 
-.twoot-item__user{
-    font-weight: bold;
-}
+    .twoot-item__user{
+        font-weight: bold;
+    }
 </style>
