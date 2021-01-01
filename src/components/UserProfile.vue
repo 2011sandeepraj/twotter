@@ -9,14 +9,27 @@
             <button class="user-profile_button" @click="followUser" >
                  Follow Me!
             </button>     
+            <form class="user-profile__create-twoot">
+                <label for="newTwoot">New Twoot</label>
+                <textarea id="newTwoot" rows="4" cols="50"/>
+                <label for="newTwootType">Type:</label>
+                <select id="newTwootType" class="select">
+                    <option :value="option.value" v-for="(option, index) in twootTypes" :key="index">
+                            {{option.name}}
+                    </option>
+                </select>
+            </form>
+               
+            
+
         </div>
-        <div >          
+        
+        <div class="user-profile__twoots-wrapper">
             <!--TwootItem v-for="twoot in user.twoots" :key="twoot.id" :username="user.username" :twoot="twoot"/-->
             <div v-for="twoot in user.twoots" :key="twoot.id" class="twoot-item">
                 @{{user.username}} says 
                 <h3>{{twoot.content}}</h3>
-            </div>
-            
+            </div>            
         </div>
           
     </div>
@@ -33,6 +46,7 @@ export default {
     name: "UserProfile",
     data() {
         return {
+            twootTypes:[{value: 'draft', name: 'Draft'},{value:'instant', name:'Instant Twoot'}],
             followers: 0,
             user:{
                 id:1,
@@ -43,7 +57,7 @@ export default {
                 isAdmin: true,
                 twoots: [
                     {id: 1, content:'Welcome to my twooter profile'},
-                    {id: 2, content:'I am blah blah and blah and passionate about plah plah and plan!'}
+                    {id: 2, content:'I am blah blah and blah and passionate about plah plah and plah!'}
                 ]
                 
             }
@@ -77,41 +91,62 @@ export default {
 <style scoped>
     .user-profile {
         display: grid;
-        grid-template-columns: 1fr 3fr;
-        width: 100%;
+        grid-template-columns: 1fr 3fr;       
         padding: 50px 5%;
-        text-align:left;        
+        text-align:left;      
+         
     }
+    
 
     .user-profile_button {
         margin-top:20px;       
         margin-right: auto;
+        margin-bottom:20px;       
     }
 
     .user-profile_user-panel {
         display: flex;
         flex-direction: column;
-        margin-right: 20px;
-        
+      
         padding: 20px;
         background-color: white;
         border-radius: 5px;
         border: 1px solid #DFE3E8;
     }
 
+    h1{
+        margin: 0;
+    }
+    
+    user-profile__create-twoot {
+     
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+       
+    }
+    user-profile__twoots-wrapper {
+        margin: 10px;
+        padding: 10px;
+        display: grid;
+        grid-gap: 10px
+    }
+
     
 .twoot-item{
+    margin-left: 50px; 
     padding: 20px;
     background-color: white;
     border-radius: 5px;
     border: 1px solid #DFE3E8;
     box-sizing: border-box;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition:all 0.25s ease;
+    
 }
 
 .twoot-item:hover{
-    transform: scale(1.1, 1.1)
+    transform: scale(1.15, 1.15)
 }
 
 .twoot-item__user{

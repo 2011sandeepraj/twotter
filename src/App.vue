@@ -23,13 +23,20 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #3378c2;
   background-color: #F3F5FA;
   display: flex;
   flex-direction: column;
-  text-align: center;  
+  min-height: 100vh;
+  
+}
+
+.select{
+     background-image:none\9;
+        padding: 5px\9;
+       
 }
 </style>
