@@ -4,39 +4,16 @@
             <h1>@{{user.username}}</h1>
             <h4>{{fullName}}</h4>
             <div>Followers:{{ followers }}</div>
-            
-            
+
             <button class="userprofile-button" @click="followUser" >
                  Follow Me!
             </button>   
             
             <CreateTwootPanel @add-twoot="addTwoot"/>
-            <!-- <form class="user-profile__create-twoot" @submit.prevent="createNewTwoot" :class="{'--exceeded':newTwootCharacterCount>180}">
-                <label for="newTwoot">New Twoot ({{newTwootCharacterCount}}/180)</label>
-                <textarea id="newTwoot" rows="4" cols="50" v-model="newTwootContent"/>
-                <label for="newTwootType">Type:</label>
-                <select id="newTwootType" class="select" v-model="selectedTwootType">
-                    <option :value="option.value" v-for="(option, index) in twootTypes" :key="index">
-                            {{option.name}}
-                    </option>
-                </select>
-                <div>
-                    <button class="userprofile-button">
-                        Twoot!!!
-                    </button>
-                </div>
-            </form> -->
-               
-            
-
         </div>
         
         <div class="user-profile__twoots-wrapper">
             <TwootItem v-for="twoot in user.twoots" :key="twoot.id" :username="user.username" :twoot="twoot"/>
-            <!-- <div v-for="twoot in user.twoots" :key="twoot.id" class="twoot-item">
-                @{{user.username}} says 
-                <h3>{{twoot.content}}</h3>
-            </div>             -->
         </div>
           
     </div>
@@ -47,16 +24,11 @@
 import TwootItem from "@/components/TwootItem";
 import CreateTwootPanel from "@/components/CreateTwootPanel"
 
-
-
-
 export default {
     name: "UserProfile",
-    data() {
-        return {
-            newTwootContent:'',
-            selectedTwootType:'instant',
-            twootTypes:[{value: 'draft', name: 'Draft'},{value:'instant', name:'Instant Twoot'}],
+    components: {TwootItem,CreateTwootPanel},
+     data() {
+         return {     
             followers: 0,
             user:{
                 id:1,
@@ -70,9 +42,9 @@ export default {
                     {id: 2, content:'I am blah blah and blah and passionate about plah plah and plah!'}
                 ]
                 
-            }
-        }
-    },
+             }
+         }
+     },
     watch:{
         followers(newFollowerCount, oldFollowerCount){
             if(newFollowerCount>oldFollowerCount){
@@ -85,28 +57,24 @@ export default {
             return `${this.user.firstName} ${this.user.lastName}`; 
         },
 
-        newTwootCharacterCount(){
-            return this.newTwootContent.length;
-        }
     },
-    components: {TwootItem,CreateTwootPanel},
+    
     methods: {
         followUser() {
-        this.followers++
-    }, 
-    createNewTwoot(){
-       if(this.newTwootContent && this.selectedTwootType !== 'draft'){
-            let freshTwoot = {
+            this.followers++
+        }, 
+        addTwoot(twoot){
+             let freshTwoot = {
                 id: this.user.twoots.length+1,
-                content: this.newTwootContent
+                content: twoot
             }
+            this.user.twoots.unshift(freshTwoot);
+            this.newTwootContent = '';
+            console.log(`newtwootcontent should have been cleared ${this.newTwootContent}`);
+            
+        }
 
-                this.user.twoots.unshift(freshTwoot);
-                this.newTwootContent = '';
-                console.log(`newtwootcontent should have been cleared ${this.newTwootContent}`);
-       }
-    } //createNewTwoot ends
-  } //methods ends
+   } //methods ends
 } //export default ends
 
 
