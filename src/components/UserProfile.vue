@@ -8,8 +8,10 @@
             
             <button class="userprofile-button" @click="followUser" >
                  Follow Me!
-            </button>     
-            <form class="user-profile__create-twoot" @submit.prevent="createNewTwoot" :class="{'--exceeded':newTwootCharacterCount>180}">
+            </button>   
+            
+            <CreateTwootPanel @add-twoot="addTwoot"/>
+            <!-- <form class="user-profile__create-twoot" @submit.prevent="createNewTwoot" :class="{'--exceeded':newTwootCharacterCount>180}">
                 <label for="newTwoot">New Twoot ({{newTwootCharacterCount}}/180)</label>
                 <textarea id="newTwoot" rows="4" cols="50" v-model="newTwootContent"/>
                 <label for="newTwootType">Type:</label>
@@ -23,27 +25,28 @@
                         Twoot!!!
                     </button>
                 </div>
-            </form>
+            </form> -->
                
             
 
         </div>
         
         <div class="user-profile__twoots-wrapper">
-            <!--TwootItem v-for="twoot in user.twoots" :key="twoot.id" :username="user.username" :twoot="twoot"/-->
-            <div v-for="twoot in user.twoots" :key="twoot.id" class="twoot-item">
+            <TwootItem v-for="twoot in user.twoots" :key="twoot.id" :username="user.username" :twoot="twoot"/>
+            <!-- <div v-for="twoot in user.twoots" :key="twoot.id" class="twoot-item">
                 @{{user.username}} says 
                 <h3>{{twoot.content}}</h3>
-            </div>            
+            </div>             -->
         </div>
           
     </div>
-    <!-- <SandeepItem/> -->
+    
 </template>
 
 <script>
-//import TwootItem from "./TwootItem";
-//import SandeepItem from "SandeepItem";
+import TwootItem from "@/components/TwootItem";
+import CreateTwootPanel from "@/components/CreateTwootPanel"
+
 
 
 
@@ -86,7 +89,7 @@ export default {
             return this.newTwootContent.length;
         }
     },
-    //components: {SandeepItem}
+    components: {TwootItem,CreateTwootPanel},
     methods: {
         followUser() {
         this.followers++
