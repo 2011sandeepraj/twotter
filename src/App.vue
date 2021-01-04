@@ -7,7 +7,7 @@
   </nav>  
 
    <UserProfile/>
-   <!-- <SandeepItem/> -->
+  
  </div>
 </template>
 
@@ -46,14 +46,12 @@ nav {
     padding: 5px 6%;
     background-color: rgb(15, 241, 241);
     color: white;
-    
-
-    .navigation__logo {
+ 
+}
+ .navigation__logo {
       font-weight: bold;
       font-size: 50px;
     }
-
-}
 .select{
      background-image:none\9;
         padding: 5px\9;
