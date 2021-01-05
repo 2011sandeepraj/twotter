@@ -5,6 +5,10 @@ import Home from '../views/Home.vue'
 import UserProfile from '../views/UserProfile'
 import Admin from '../views/Admin'
 
+//Direct way of accessing the store
+import store from '../store'
+
+import {users} from '../assets/users'
 const routes = [
   {
     path: '/',
@@ -15,12 +19,13 @@ const routes = [
     path: '/user/:userId',
     name: 'UserProfile',
     component: UserProfile
-  },{
+  },
+  {
     path: '/admin',
     name: 'Admin',
     component: Admin,
     meta: {
-      reuiresAdmin: true
+      requiresAdmin: true
     }
   }
  
@@ -28,16 +33,27 @@ const routes = [
 
 const router = createRouter({
   //history: createWebHashHistory(),
-  history: createWebHistory(),
 
+  //Using this varation of history to avoid the # sign in the route
+  history: createWebHistory(),
   routes
 })
 
 router.beforeEach(async (to, from, next) =>{
-  const isAdmin = false;
-  const requiresAdmin = to.matched.some(record=>record.meta.requiresAdmin)
+  console.log('before each')
+  const user = store.state.user;
+  console.log(user);
+  console.log(store.state.user);
+  if(!user){
+    //dispatch is the function to run actions
+    await store.dispatch('setUser', users[0])
+  }
+  const isAdmin = true;
+  const requiresAdmin = to.matched.some(record => record.meta.requiresAdmin);
+
+  console.log(requiresAdmin, isAdmin)
   if(requiresAdmin && !isAdmin) {
-    console.log(requiresAdmin, isAdmin)
+    
     next({name: 'Home'});
   }
   else { 

@@ -6,6 +6,9 @@
         My Twootter
     </div>
     </router-link>
+    <div class="navigation__user">
+      {{user.username}}
+    </div>
 
   </nav>  
   <router-view/>
@@ -16,14 +19,20 @@
 
 <script>
 
-
-
+import {useStore} from 'vuex'
+import {computed} from 'vue'
 
 
 export default {
   name: 'App',
-  components: {
-     
+  setup(){
+    //Composition API way of accessing the store
+    const store = useStore();
+    const user = computed(()=> store.state.user);
+    return {
+      user
+    }
+
   }
 } 
 </script>
