@@ -5,7 +5,7 @@ export const users = [
             firstName: 'Sandeepraj',
             lastName: 'Singh',
             email: 'sandeepraj.tandon@cgi.com',
-            
+            followers: 0,
             twoots: [
                 {id: 1, content:'Welcome to my twooter profile'},
                 {id: 2, content:'I am blah blah and blah and passionate about plah plah and plah!'}
@@ -18,7 +18,7 @@ export const users = [
             firstName: 'Lovely',
             lastName: 'Kaur',
             email: 'lovely.schoolhouseteaching@shaw.ca',
-            
+            followers: 0,
             twoots: [
                 {id: 1, content:'Welcome to School House Teaching Supplies!'},
                 {id: 2, content:'It is an educational store for Everyone!!'}
@@ -31,7 +31,7 @@ export const users = [
             firstName: 'guddi',
             lastName: 'kaur',
             email: 'guddikaur@gmail.com',
-            
+            followers: 0,
             twoots: [
               
             ]

@@ -3,7 +3,7 @@
         <div class="user-profile_user-panel">
             <h1>@{{state.user.username}}</h1>           
             <h4>{{state.fullName}}</h4>
-            <div>Followers:{{ state.followers }}</div>
+            <div>Followers:{{ state.user.followers }}</div>
 
             <button class="userprofile-button" @click="followUser" >
                  Follow Me!
@@ -35,8 +35,7 @@ export default {
         const userId = computed(() => route.params.userId);
         const fullName = computed(()=> `${state.user.firstName} ${state.user.lastName}`);
         const state = reactive({ 
-                followers: 0,
-                user:users[userId.value-1]||users[0]
+            user:users[userId.value-1]||users[0]
         });
          
         function addTwoot(twoot){
@@ -52,7 +51,7 @@ export default {
         }
 
         function followUser() {
-            state.followers++
+            state.user.followers++
         }
 
         return {state, userId,fullName,addTwoot,followUser}

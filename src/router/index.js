@@ -36,8 +36,13 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) =>{
   const isAdmin = false;
   const requiresAdmin = to.matched.some(record=>record.meta.requiresAdmin)
-  if(requiresAdmin && !isAdmin) next({name: 'Home'});
-  else next();
+  if(requiresAdmin && !isAdmin) {
+    console.log(requiresAdmin, isAdmin)
+    next({name: 'Home'});
+  }
+  else { 
+    next();
+  }
 })
   
 
