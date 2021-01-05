@@ -7,7 +7,7 @@
       <div class="create-twoot-type">
         <label for="newTwootType"><strong>Type: </strong></label>
         <select id="newTwootType" v-model="state.selectedTwootType">
-          <option :value="option.value" v-for="(option, index) in twootTypes" :key="index">
+          <option :value="option.value" v-for="(option, index) in state.twootTypes" :key="index">
             {{ option.name }}
           </option>
         </select>
@@ -36,10 +36,12 @@ export default {
 
     function createNewTwoot(){
           if(state.newTwootContent && state.selectedTwootType !== 'draft'){
+          
             ctx.emit('add-twoot', state.newTwootContent);
-            state.newTwootContent='';       
-            }
-          } //createNewTwoot ends
+             state.newTwootContent='';
+          
+          }             
+    } //createNewTwoot ends
 
      return {state, newTwootCharacterCount, createNewTwoot}   
 

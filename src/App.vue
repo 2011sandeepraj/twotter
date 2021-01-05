@@ -1,29 +1,30 @@
 <template>
  <div id="app">
   <nav>
-    <div class="navigation__logo">
+    <router-link to="/">
+        <div class="navigation__logo">
         My Twootter
     </div>
-  </nav>  
+    </router-link>
 
-   <UserProfile/>
+  </nav>  
+  <router-view/>
+
   
  </div>
 </template>
 
 <script>
-import UserProfile from "./components/UserProfile";
 
-//import SandeepItem from './components/SandeepItem.vue';
+
+
 
 
 export default {
   name: 'App',
   components: {
-    UserProfile
-    //,
-   // SandeepItem
-}
+     
+  }
 } 
 </script>
 
@@ -43,14 +44,14 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 6%;
+    padding: 5px 5%;
     background-color: rgb(15, 241, 241);
     color: white;
  
 }
  .navigation__logo {
       font-weight: bold;
-      font-size: 50px;
+      font-size: 45px;
     }
 .select{
      background-image:none\9;
