@@ -7,7 +7,7 @@ export const users = [
             email: 'sandeepraj.tandon@cgi.com',
             followers: 10,
             twoots: [
-                {id: 1, content:'Husband, Father, Full Stacker'},
+                {id: 1, content:'Husband, Father, Random Full Stacker'},
                 {id: 2, content:'If cuisines could decide wars, Indians win forever!!'}
             ]
             
@@ -20,7 +20,7 @@ export const users = [
             email: 'andrew.signori@email.com',
             followers: 50,
             twoots: [
-                {id: 1, content:'I am with Advanced Education for more than a century now:-)'}
+                {id: 1, content:'Full Stacker!'}
                 
             ]
             
@@ -59,7 +59,7 @@ export const users = [
             email: 'michelle.smith@email.com',
             followers: 3000,
             twoots: [
-                {id: 1, content:'Advanced Education needs me as Scrum Master, Project Manager and a glue!!'},
+                {id: 1, content:'Adv-ed needs me as Scrum Master, Project Manager and a glue!!'},
                 {id: 2, content:'I will have a blue tick soon!'},
                               
             ] 
