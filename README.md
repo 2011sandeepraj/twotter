@@ -1,4 +1,4 @@
-# twotter-tutorial
+# mytwotter
 
 ## Project setup
 ```

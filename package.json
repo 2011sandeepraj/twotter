@@ -1,5 +1,5 @@
 {
-  "name": "twotter-tutorial",
+  "name": "sandeep-twotter",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "connect-history-api-fallback": "^1.6.0",
-    "core-js": "^3.6.5",
+    "core-js": "^3.8.2",
     "express": "^4.17.1",
     "express-sslify": "^1.2.0",
     "serve-static": "^1.14.1",
@@ -18,15 +18,15 @@
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-plugin-babel": "^4.5.10",
+    "@vue/cli-plugin-eslint": "^4.5.10",
+    "@vue/cli-plugin-router": "^4.5.10",
+    "@vue/cli-plugin-vuex": "^4.5.10",
+    "@vue/cli-service": "^4.5.10",
     "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0-0"
+    "eslint-plugin-vue": "^7.4.1"
   },
   "eslintConfig": {
     "root": true,
