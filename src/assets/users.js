@@ -8,7 +8,7 @@ export const users = [
             followers: 10,
             twoots: [
                 {id: 1, content:'Husband, Father, Full Stacker'},
-                {id: 2, content:'My mother says i am intelligent and handsome but my Wife just knows me far too much to pretend its true!'}
+                {id: 2, content:'If cuisines could decide wars, Indians win forever!!'}
             ]
             
         },
@@ -20,8 +20,8 @@ export const users = [
             email: 'andrew.signori@email.com',
             followers: 50,
             twoots: [
-                {id: 1, content:'I am a century old developer on Advanced Education!'},
-                {id: 2, content:'I will remain a developer for ever on Advanced Education!!'}
+                {id: 1, content:'I am with Advanced Education for more than a century now:-)'}
+                
             ]
             
         },
@@ -62,7 +62,21 @@ export const users = [
                 {id: 1, content:'Advanced Education needs me as Scrum Master, Project Manager and a glue!!'},
                 {id: 2, content:'I will have a blue tick soon!'},
                               
-            ]
+            ] 
+            
+        }
+        ,{
+            id:6,
+            username:'roopManroop',
+            firstName: 'Roop',
+            lastName: 'Manroop',
+            email: 'roop.manroop@email.com',
+            followers: 30,
+            twoots: [
+                {id: 1, content:'Is it roop or manroop?'},
+                
+                              
+            ] 
             
         }
     ]
