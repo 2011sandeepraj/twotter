@@ -6,7 +6,7 @@
         My Twootter
     </div>
     </router-link>
-    <div class="navigation__user">
+    <div class="navigation__user" v-if="user">
       {{user.username}}
     </div>
 
@@ -28,7 +28,7 @@ export default {
   setup(){
     //Composition API way of accessing the store
     const store = useStore();
-    const user = computed(()=> store.state.user);
+    const user = computed(() => store.state.User.user);
     return {
       user
     }

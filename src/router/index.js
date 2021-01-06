@@ -4,11 +4,11 @@ import { createRouter,
 import Home from '../views/Home.vue'
 import UserProfile from '../views/UserProfile'
 import Admin from '../views/Admin'
-
 //Direct way of accessing the store
 import store from '../store'
-
 import {users} from '../assets/users'
+
+
 const routes = [
   {
     path: '/',
@@ -41,11 +41,10 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) =>{
   console.log('before each')
-  const user = store.state.user;
-  console.log(user);
-  console.log(store.state.user);
+  const user = store.state.User.user;
   if(!user){
     //dispatch is the function to run actions
+    //In the tutorial it used 'User/setUser' instead 'setUser'
     await store.dispatch('setUser', users[0])
   }
   const isAdmin = true;
