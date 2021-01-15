@@ -3,18 +3,20 @@
   <nav>
     <router-link to="/">
         <div class="navigation__logo">
-        My Twootter
-    </div>
+          My Twootter
+        </div>
     </router-link>
     <div class="navigation__user" v-if="user">
       {{user.username}}
     </div>
-
+    
   </nav>  
+     <!-- <button @click="goToHome()"> </button> -->
   <router-view/>
 
-  
  </div>
+
+ 
 </template>
 
 <script>
@@ -29,6 +31,10 @@ export default {
     //Composition API way of accessing the store
     const store = useStore();
     const user = computed(() => store.state.User.user);
+    // goToHome(){
+    //   this.$router.push('/home'); 
+    //  }
+
     return {
       user
     }

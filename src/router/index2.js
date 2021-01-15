@@ -12,27 +12,35 @@ import {users} from '../assets/users'
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: Home,    
+    meta: {
+      requiresAuthenticated: true
+    }
+
   },
   { 
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    
   },
   {
     path: '/user/:userId',
     name: 'UserProfile',
-    component: UserProfile
-  },  
+    component: UserProfile,
+    meta: {
+      requiresAuthenticated: true
+    }
+  },
   {
     path: '/admin',
     name: 'Admin',
     component: Admin,
     meta: {
       requiresAdmin: true,
-     
+      requiresAuthenticated: true
     }
   }
  

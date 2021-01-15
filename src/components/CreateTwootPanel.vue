@@ -1,27 +1,36 @@
 <template>
   <form class="create-twoot-panel" @submit.prevent="createNewTwoot" :class="{ '--exceeded': newTwootCharacterCount > 180 }">
     <label for="newTwoot"><strong>New Twoot</strong> ({{ newTwootCharacterCount }}/180)</label>
-    <textarea id="newTwoot" rows="4" v-model="state.newTwootContent"/>
-
+    <!-- <textarea id="newTwoot" rows="4" v-model="state.newTwootContent"/> -->
+    <div style="padding-bottom:10px;">
+      <InputText id="newTwoot"  :autoResize="true" v-model="state.newTwootContent"/>
+    </div>
     <div class="create-twoot-panel__submit">
-      <div class="create-twoot-type">
+      <!-- <div class="create-twoot-type">
         <label for="newTwootType"><strong>Type: </strong></label>
         <select id="newTwootType" v-model="state.selectedTwootType">
-          <option :value="option.value" v-for="(option, index) in state.twootTypes" :key="index">
-            {{ option.name }}
-          </option>
+            <option :value="option.value" v-for="(option, index) in state.twootTypes" :key="index">
+              {{ option.name }}
+            </option>
         </select>
-      </div>
-
-      <button class="createTwoot-button">
+      </div> -->
+      <!-- <button >
         Twoot It!
-      </button> 
+      </button>  -->
+    
+
+       <!-- <Button  icon="pi pi-check" iconPos="right"  class="p-button-raised p-button-rounded"  label="Twoot It!"  type="submit"></Button> -->
+      
+       <Button  icon="pi pi-check" iconPos="right"  class="p-button-raised p-button-rounded"  label="Twoot It!" @click="toastIt"></Button>
+       <Toast/>
+   
     </div>
   </form>
 </template>
 
 <script>
 import {reactive, computed} from 'vue';
+import {useToast} from 'primevue/usetoast';
 
 export default {
   name: "CreateTwootPanel",
@@ -33,17 +42,27 @@ export default {
         });
 
     const newTwootCharacterCount = computed(()=>state.newTwootContent.length);
+    const toast = useToast();
+    const toastText = ''; 
+    const toastIt = () => {
+        toast.add({severity: 'info', summary:'Success with Fresh Twoot!',detail:toastText})
+        createNewTwoot()
+    }
+
 
     function createNewTwoot(){
-          if(state.newTwootContent && state.selectedTwootType !== 'draft'){
+          if(state.newTwootContent && state.selectedTwootType !== 'draft'){           
           
             ctx.emit('add-twoot', state.newTwootContent);
-             state.newTwootContent='';
+            state.newTwootContent='';
+
+          
           
           }             
     } //createNewTwoot ends
 
-     return {state, newTwootCharacterCount, createNewTwoot}   
+    
+     return {state, newTwootCharacterCount, createNewTwoot, toastText, toastIt}   
 
   },//setup ends
    
@@ -70,9 +89,6 @@ export default {
 
 <style  scoped>
   .createTwoot-button {
-      padding: 5px 20px;
-      border-radius: 5px;
-      border: none;
       background-color: deeppink;
       color: white;
       font-weight: bold;

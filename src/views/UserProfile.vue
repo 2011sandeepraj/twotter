@@ -5,11 +5,14 @@
             <h4>{{state.fullName}}</h4>
             <div>Followers:{{ state.user.followers }}</div>
 
-            <button class="userprofile-button" @click="followUser" >
+            <!-- <button @click="followUser" >
                  Follow Me!
-            </button>   
+            </button>    -->
+            
+            <Button  class="userprofile-button" icon="pi pi-user" label="Follow Me!"  @click="followUser"></Button>
             
             <CreateTwootPanel @add-twoot="addTwoot"/>
+
         </div>
         
         <div class="user-profile__twoots-wrapper">
@@ -26,18 +29,21 @@ import CreateTwootPanel from "@/components/CreateTwootPanel"
 import {useRoute} from 'vue-router';
 import {reactive, computed} from 'vue';
 import {users} from '../assets/users'
+//import {defineComponent} from 'vue';
+
 
 export default {
     name: "UserProfile",
     components: {TwootItem,CreateTwootPanel},
     setup(){
+        
         const route = useRoute();
         const userId = computed(() => route.params.userId);
         const fullName = computed(()=> `${state.user.firstName} ${state.user.lastName}`);
         const state = reactive({ 
             user:users[userId.value-1]||users[0]
         });
-         
+     
         function addTwoot(twoot){
             
              let freshTwoot = {
