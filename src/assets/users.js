@@ -9,7 +9,14 @@ export const users = [
             twoots: [
                 {id: 1, content:'Husband, Father, Random Full Stacker'},
                 {id: 2, content:'If cuisines could decide wars, Indians win forever!!'}
+            ],
+            cars: [
+                {"brand": "Volkswagen", "year": 2012, "color": "Orange", "vin": "dsad231ff"},
+                {"brand": "Audi", "year": 2011, "color": "Black", "vin": "gwregre345"},
+                {"brand": "Renault", "year": 2005, "color": "Gray", "vin": "h354htr"},
+                {"brand": "BMW", "year": 2003, "color": "Blue", "vin": "j6w54qgh"},
             ]
+
             
         },
         {
@@ -22,7 +29,12 @@ export const users = [
             twoots: [
                 {id: 1, content:'Full Stacker!'}
                 
+            ],
+            cars:[
+                {"brand": "Ford", "year": 2000, "color": "Black", "vin": "h54hw5"},
+                {"brand": "Fiat", "year": 2013, "color": "Red", "vin": "245t2s"}
             ]
+    
             
         },
         {
